@@ -1,0 +1,71 @@
+
+$ gdb --args python svm.py 
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-50.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /opt/itinerator/pyre/bin/python...(no debugging symbols found)...done.
+(gdb) run
+Starting program: /opt/itinerator/pyre/bin/python svm.py
+[Thread debugging using libthread_db enabled]
+[New Thread 0x7fffeb1ac700 (LWP 21655)]
+Selecting K-best features by chi squared test
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007fffe2770601 in ?? ()
+   from /usr/lib64/python2.6/site-packages/scipy/sparse/sparsetools/_csc.so
+Missing separate debuginfos, use: debuginfo-install pyre-2.6.5-41858.rhel6.x86_64
+(gdb) bt
+#0  0x00007fffe2770601 in ?? ()
+   from /usr/lib64/python2.6/site-packages/scipy/sparse/sparsetools/_csc.so
+#1  0x00007fffe2773fed in ?? ()
+   from /usr/lib64/python2.6/site-packages/scipy/sparse/sparsetools/_csc.so
+#2  0x0000000000499cdd in PyEval_EvalFrameEx ()
+#3  0x000000000049a789 in PyEval_EvalCodeEx ()
+#4  0x00000000004994b4 in PyEval_EvalFrameEx ()
+#5  0x0000000000499667 in PyEval_EvalFrameEx ()
+#6  0x000000000049a789 in PyEval_EvalCodeEx ()
+#7  0x00000000004edec1 in function_call ()
+#8  0x0000000000417fed in PyObject_Call ()
+#9  0x000000000041fd82 in instancemethod_call ()
+#10 0x0000000000417fed in PyObject_Call ()
+#11 0x00000000004676f8 in call_maybe ()
+#12 0x0000000000468b1e in slot_nb_multiply ()
+#13 0x0000000000418498 in binary_op1 ()
+#14 0x000000000041a48b in PyNumber_Multiply ()
+#15 0x0000000000495dbe in PyEval_EvalFrameEx ()
+#16 0x000000000049a789 in PyEval_EvalCodeEx ()
+#17 0x00000000004edec1 in function_call ()
+#18 0x0000000000417fed in PyObject_Call ()
+#19 0x000000000041fd82 in instancemethod_call ()
+#20 0x0000000000417fed in PyObject_Call ()
+#21 0x00000000004676f8 in call_maybe ()
+#22 0x00000000004184ef in binary_op1 ()
+#23 0x000000000041a48b in PyNumber_Multiply ()
+#24 0x0000000000495dbe in PyEval_EvalFrameEx ()
+#25 0x000000000049a789 in PyEval_EvalCodeEx ()
+#26 0x00000000004994b4 in PyEval_EvalFrameEx ()
+#27 0x0000000000499667 in PyEval_EvalFrameEx ()
+#28 0x000000000049a789 in PyEval_EvalCodeEx ()
+#29 0x00000000004ede6f in function_call ()
+#30 0x0000000000417fed in PyObject_Call ()
+#31 0x00000000004985c1 in PyEval_EvalFrameEx ()
+#32 0x000000000049a789 in PyEval_EvalCodeEx ()
+#33 0x00000000004994b4 in PyEval_EvalFrameEx ()
+#34 0x0000000000499667 in PyEval_EvalFrameEx ()
+#35 0x0000000000499667 in PyEval_EvalFrameEx ()
+#36 0x000000000049a789 in PyEval_EvalCodeEx ()
+#37 0x000000000049a837 in PyEval_EvalCode ()
+#38 0x00000000004b9f51 in PyRun_FileExFlags ()
+#39 0x00000000004ba18d in PyRun_SimpleFileExFlags ()
+#40 0x0000000000413c7f in Py_Main ()
+#41 0x00007ffff71c4cdd in __libc_start_main () from /lib64/libc.so.6
+#42 0x0000000000413009 in _start ()
+
+
+

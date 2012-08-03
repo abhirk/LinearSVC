@@ -1,0 +1,49 @@
+$ gdb --args python svm.py 
+GNU gdb (GDB) Red Hat Enterprise Linux (7.2-50.el6)
+Copyright (C) 2010 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>...
+Reading symbols from /opt/itinerator/pyre/bin/python...(no debugging symbols found)...done.
+(gdb) run
+Starting program: /opt/itinerator/pyre/bin/python svm.py
+[Thread debugging using libthread_db enabled]
+[New Thread 0x7fffead5d700 (LWP 22310)]
+Training LinearSVC(C=1.0, class_weight=None, dual=True, fit_intercept=True,
+     intercept_scaling=1, loss=l2, multi_class=ovr, penalty=l2, tol=0.0001,
+
+Program received signal SIGSEGV, Segmentation fault.
+train (prob=0x7fffae834010, param=0xcb9d00)
+    at sklearn/svm/src/liblinear/linear.cpp:1959
+1959    sklearn/svm/src/liblinear/linear.cpp: No such file or directory.
+        in sklearn/svm/src/liblinear/linear.cpp
+Missing separate debuginfos, use: debuginfo-install pyre-2.6.5-41858.rhel6.x86_64
+(gdb) bt
+#0  train (prob=0x7fffae834010, param=0xcb9d00)
+    at sklearn/svm/src/liblinear/linear.cpp:1959
+#1  0x00007fffdbf99e78 in __pyx_f_7sklearn_3svm_9liblinear__csr_train_wrap (
+    __pyx_v_n_features=3118889, __pyx_v_X_values=0x16d86e0, 
+    __pyx_v_X_indices=<value optimized out>, 
+    __pyx_v_X_indptr=<value optimized out>, __pyx_v_Y=0x1787700, 
+    __pyx_v_solver_type=1, __pyx_v_eps=0.0001, __pyx_v_bias=1, __pyx_v_C=1, 
+    __pyx_v_weight_label=0x16c8870, __pyx_v_weight=0x1672c10)
+    at sklearn/svm/liblinear.c:1918
+#2  0x00007fffdbf9c32b in __pyx_pf_7sklearn_3svm_9liblinear_1csr_train_wrap (
+    __pyx_self=<value optimized out>, __pyx_args=<value optimized out>, 
+    __pyx_kwds=<value optimized out>) at sklearn/svm/liblinear.c:2446
+#3  0x00000000004995ba in PyEval_EvalFrameEx ()
+#4  0x000000000049a789 in PyEval_EvalCodeEx ()
+#5  0x00000000004994b4 in PyEval_EvalFrameEx ()
+#6  0x0000000000499667 in PyEval_EvalFrameEx ()
+#7  0x0000000000499667 in PyEval_EvalFrameEx ()
+#8  0x000000000049a789 in PyEval_EvalCodeEx ()
+#9  0x000000000049a837 in PyEval_EvalCode ()
+#10 0x00000000004b9f51 in PyRun_FileExFlags ()
+#11 0x00000000004ba18d in PyRun_SimpleFileExFlags ()
+#12 0x0000000000413c7f in Py_Main ()
+#13 0x00007ffff71c4cdd in __libc_start_main () from /lib64/libc.so.6
+#14 0x0000000000413009 in _start ()
